@@ -11,26 +11,30 @@
 
           <%- include('includes/messages'); %>
 
-            <form method="POST" action="/contato/register" class="my-3">
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-              <div class="form-group">
-                <label>Nome</label>
-                <input value="<%= contato.nome %>" type="text" class="form-control" name="nome">
-              </div>
-              <div class="form-group">
-                <label>Sobrenome</label>
-                <input value="<%= contato.sobrenome %>" type="text" class="form-control" name="sobrenome">
-              </div>
-              <div class="form-group">
-                <label>Email</label>
-                <input value="<%= contato.email %>" type="text" class="form-control" name="email">
-              </div>
-              <div class="form-group">
-                <label>Telefone</label>
-                <input value="<%= contato.telefone %>" type="text" class="form-control" name="telefone">
-              </div><br>
-              <button type="submit" class="form-control btn btn-primary">Salvar</button>
-            </form>
+          <% if(contato._id) { %>
+          <form method="POST" action="/contato/edit/<%= contato._id %>" class="my-3">
+          <% } else { %>  
+          <form method="POST" action="/contato/register" class="my-3">  
+          <%  } %>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="form-group">
+              <label>Nome</label>
+              <input value="<%= contato.nome %>" type="text" class="form-control" name="nome">
+            </div>
+            <div class="form-group">
+              <label>Sobrenome</label>
+              <input value="<%= contato.sobrenome %>" type="text" class="form-control" name="sobrenome">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input value="<%= contato.email %>" type="text" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+              <label>Telefone</label>
+              <input value="<%= contato.telefone %>" type="text" class="form-control" name="telefone">
+            </div><br>
+            <button type="submit" class="form-control btn btn-primary">Salvar</button>
+          </form>
 
         </div>
 
